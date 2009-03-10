@@ -6,10 +6,8 @@ module ApplicationHelper
       <div class="pd_container">
         <div class="pd_containerTop"></div>
         <div class="pd_containerContent">
-          <div class="container_content">
     HTML
     stop = <<-HTML
-          </div>
         </div>
         <div class="pd_containerBottom"></div>
       </div>
@@ -49,9 +47,13 @@ module ApplicationHelper
   
   def friend_select_box( options )
     res = "<select id=\"#{options[:name]}\" name=\"#{options[:name]}\">\n"
-    res += "\t<option></option>\n" if options[:blank] 
+    res += "\t<option>#{options[:blank_text]||''}</option>\n" if options[:blank] 
     for p in current_person.known_people
-      res += "\t<option value=\"#{p.id}\" class=\"#{p.grade}\" #{options[:selected] == p.id ? 'selected="selected"' : ''}>#{p.name}</option>\n"
+      res += <<-HTML
+        <option value="#{p.id}" class="#{p.grade}" style="background-image:url(#{ p.gravatar_url( :size => 20) }&amp;d=wavatar)" #{options[:selected] == p.id ? 'selected="selected"' : ''}>
+              #{p.name}
+        </option>
+      HTML
     end
     res += "</select>"
   end

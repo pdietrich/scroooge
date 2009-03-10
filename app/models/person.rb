@@ -3,8 +3,6 @@ require 'gravtastic'
 
 class Person < ActiveRecord::Base
   
-  is_gravtastic :with => :gravatar_email
-  
   belongs_to :currency
   has_many :direct_login_identifiers, :class_name => 'DirectLoginIdentifier', :foreign_key => 'identified_person_id'
 
@@ -31,6 +29,12 @@ class Person < ActiveRecord::Base
   validates_format_of       :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_uniqueness_of   :email, :case_sensitive => false
   before_save :encrypt_password
+
+
+  is_gravtastic :with => :gravatar_email
+  def gravatar_email
+    return self.read_attribute(:gravatar_email) || self.email
+  end
 
 # # never tested!
 #  named_scope( :with_balance,

@@ -329,16 +329,20 @@ table.bill_details td.price {
 		}
 		
 			div.pd_container div.pd_containerContent {
-				width: 692px;
-				padding:  0 4px;
+				position: relative;
+				width: 652px;
+				padding: 0 24px;
+				margin: 0;
 				background: url(images/div_containerContent.png) repeat-y;
 			}
 			
-				div.pd_container div.pd_containerContent div {
+			/*
+				div.pd_container div.pd_containerContent > div {
 					margin: 0 12px 0 12px;
 					position: relative;
 					padding-bottom: 10px;
 				}
+			*/
 		
 		div.pd_container div.pd_containerBottom {
 			width: 700px;
@@ -347,6 +351,36 @@ table.bill_details td.price {
 		}
 
 /* new stuff */
+
+div.person_entry {
+	padding: 0 !important;
+	margin: 0 !important;
+	height: 52px;
+}
+
+.person_entry .avatar {
+	position: absolute;
+	width:56px;
+	height:56px;
+	top: -2px;
+	left: 12px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+
+.person_entry .person_name {
+	position: absolute;
+	top: 17px;
+	left: 92px;
+}
+
+.person_entry .person_amount {
+	position: absolute;
+	top: 17px;
+	right: 26px;
+	font-size: 1.1em;
+}
 
 #flash{
 	display:none;
@@ -377,9 +411,17 @@ option {
 	font-size: 14px;
 }
 
+/* ----- */
+
 option.first {
 	font-weight: bold;
 	text-color: #333;
+}
+
+option.first, option.second {
+	background-repeat:no-repeat;
+	background-position: 2px 3px;
+	padding-left:32px;
 }
 
 #bill_fields {
@@ -394,7 +436,7 @@ option.first {
 #bill_name{
 	left: 0;
 	top: 15px;
-	width: 630px;
+	width: 638px;
 	font-size: 30px;
 }
 
@@ -410,7 +452,7 @@ div#payer_field{
 #payer_field select {
 	width: 440px;
 	height: 36px;
-	padding-top: 7px;
+	padding-top: 6px;
 	font-size: 18px;
 }
 
@@ -454,16 +496,15 @@ div#amount_field {
 }
 
 div#add_person {
-	margin: 30px 0 0px 150px;
+	margin: 30px 0 0 150px;
 	padding-bottom: 70px;
-}
-
-#add_person label {
-	display: block;
 }
 
 #person_id {
 	width: 320px;
+	height: 36px;
+	padding-top: 6px;
+	font-size: 18px;
 }
 
 button {
@@ -477,6 +518,6 @@ button {
 
 #create_bill_button {
 	position: absolute;
-	right: 10px;
-	bottom: 10px;
+	right: 22px;
+	bottom: 6px;
 }

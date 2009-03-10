@@ -1,17 +1,14 @@
-<div class="container">
-	<div class="containerTop"></div>
-	<div class="containerContent">
+<% container do %>
+<div class="person_entry">
+	<div class="avatar" style="background-image:url(<%= person.gravatar_url( :size => 56 ) + '&d=wavatar' %>)" alt="avatar"></div>
 
-		<table cellspacing="0">
-			<tr>
-				<td class="gravatar"><img src="/stylesheets/images/img_gravatar.png" alt="avatar" title="avatar" /></td>
-				<td class="description"><a href="<%= url_for( :controller => 'people', :action => 'show', :id => person.id ) %>"><%=h	 person.name %></a></td>
-				<td class="totalAmount">&nbsp;</td>
-				<td class="amount"><%= price( person.amount_owed_to( current_person.id, current_person.currency_id ) ) %></td>
+	<!-- <img src="/stylesheets/images/img_gravatar.png" alt="avatar" title="avatar" /> -->
 
-			</tr>
-		</table>
-	
+	<div class="person_name">
+		<a href="<%= url_for( :controller => 'people', :action => 'show', :id => person.id ) %>"><%=h person.name %></a>
 	</div>
-	<div class="containerBottom"></div>
+	<div class="person_amount">
+		<%= price( person.amount_owed_to( current_person.id, current_person.currency_id ) ) %>
+	</div>
 </div>
+<% end %>

@@ -50,8 +50,7 @@
 		</tbody>
 	</table>
 	<div id="add_person">
-		<label for="person_id">Add a person</label>
-		<%= friend_select_box( :name => 'person_id', :blank => true) %>
+		<%= friend_select_box( :name => 'person_id', :blank => true, :blank_text => 'Add a person...') %>
 	</div>
 	
 	<button id="create_bill_button">Create Bill</button>
