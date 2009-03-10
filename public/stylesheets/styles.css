@@ -1,0 +1,280 @@
+/********************************************
+   AUTHORS: Erwin Aligam / doTemplate
+  *******************************************/
+
+* { margin: 0; padding: 0; outline: 0; }
+
+body {
+	background-color:#EFF3FF;
+	margin:0;
+	padding:0;
+	text-align:center;
+	color:#333333;
+	font-family:Trebuchet MS, Arial, Tahoma, sans-serif;
+    font-size:9pt;
+}
+
+#wrapper {
+	width:820px;
+    background:#EFF3FF url(bg.jpg?z=22230) repeat-y center top;
+    margin:0 auto;
+    text-align:left;
+}
+
+
+
+
+#content-wrapper {
+	width: 760px;
+	margin: 0px auto;
+	padding: 0;
+}
+
+
+#header {
+	position: relative;
+    height:151px;
+	background: #caced1 url(header.jpg?z=22230) no-repeat center top;
+	padding: 0;	
+	color: #fff;
+	margin-left:auto;
+    margin-right:auto;
+	width:820px;
+}
+
+
+ #nav1 {
+	clear: both;	
+	margin: 0 auto; 
+	padding: 0;
+	background: #202020 url(menu.jpg?z=22230) repeat-x;
+	font: bold 16px/40px "Trebuchet MS", Arial, Tahoma, Sans-serif;
+	height: 40px;
+	width: 760px;
+	border-top :1px solid #FFFFFF ;
+	border-bottom : 1px solid #FFFFFF ;
+}
+
+#nav1 ul {
+	float: left;
+	list-style: none;
+	margin:0; 
+	padding: 0 ;
+}
+
+#nav1 ul li {
+	display: inline;
+}
+
+#nav1 ul li a {
+	display: block;
+	float: left;
+	padding: 0 14px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align:center;
+	border-left: 1px solid #484848 ;
+	border-right: 1px solid #000000 ;	
+}
+
+#nav1 ul li a:hover {
+	background: #EED600 url( selectedMenu.jpg?z=22230 ) repeat-x;
+	color: #202020;	
+}
+
+
+li.current {
+	background-color:#202020;
+	color: #FFFFFF;
+} 
+
+ 
+
+
+#main {
+	float: left;
+	width: 510px;
+	padding: 20px 0 0 0;
+	margin: 0px 0px 0px 20px ; 
+	display: inline;
+	background: url(box.jpg) no-repeat;
+}
+
+
+#main p, #main h1, #main h2, #main h3, #main ol, #main ul, #main form {
+	margin:10px 0pt 0pt 0pt ;
+}
+
+#main p, #sidebar p {
+	text-align:justify;
+}
+
+
+h1 {
+	font-family:Trebuchet MS;
+	font-size:20pt;	
+	color:#6BB501;
+	letter-spacing:3px;
+}
+
+
+h2 {
+	font-family:Trebuchet MS;
+	font-size:16pt;	
+	color:#6BB501;
+	letter-spacing:2px;
+}
+
+h3 {
+	font-family:Trebuchet MS;
+	font-size:14pt;	
+	color:#6BB501;
+}
+
+#main img {
+	border:1px solid #CCC;
+	padding:5px ;
+}
+
+a, a:visited {
+	color:#6BB501;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#6BB501;
+	text-decoration:underline;
+}
+
+
+#sidebar {
+	float: right;
+	width: 210px;
+	padding: 0px
+	margin: 10px 0 0 0;	
+	font-family:Trebuchet MS, sans-serif;
+    font-size:9pt;
+	color: #707070;
+}
+
+
+#sidebar *  {
+	margin: 15px;
+}
+
+#sidebar h3 {
+	font-family:Trebuchet MS, sans-serif;
+    font-size:14pt;
+	color: #AAAAAA;
+}
+
+
+#sidebar ul.sidemenu {
+	list-style: none;
+	text-align: left;
+	margin: 7px 10px 8px 10px; 
+	padding: 0;
+	text-decoration: none;	
+	border-top: 1px solid #d1d5e1;	
+}
+
+#sidebar ul.sidemenu li {
+	list-style: none;
+	padding: 4px 0 4px 0px;
+	margin: 0 2px;	
+	color: #777;	
+	border-bottom: 1px solid #d1d5e1 ;
+}
+
+
+* html body #sidebar ul.sidemenu li {
+	height: 1%;
+}
+
+
+#sidebar ul.sidemenu li a {
+	text-decoration: none;	
+	color: #FF6600;				
+}
+
+
+#sidebar ul.sidemenu li a:hover {	
+	color: #FFFFFF ;
+}
+
+#sidebar ul.sidemenu ul { margin: 0 0 0 5px; padding: 0; }
+#sidebar ul.sidemenu ul li { border: none; }
+
+
+
+#footer {
+	color: #FFFFFF;
+	background: #EFF3FF url(footer.jpg?z=22230) no-repeat center top;
+	clear: both;
+	width:820px;
+	height: 80px;
+	text-align: center;	
+	font-size: 8pt;	
+}
+
+#footer p { 
+	padding: 10px 0;
+	margin: 0;
+}
+
+#footer a {
+	color: #FFFFFF;
+	text-decoration: none; 
+}
+
+
+.clear { clear: both; }
+
+
+a, a:visited {
+	text-decoration: none;
+	background: inherit;
+	color: #6BB501; 
+}
+
+a:hover {
+	text-decoration: underline;
+	background: inherit;
+	color: #6BB501;
+}
+
+img {
+	padding:0;
+	margin:20px 10px 10px 10px;
+	border:0px solid #DFDFDF;
+}
+
+
+/* extended styles */
+
+.layout {
+	margin:0;
+}
+
+		
+.bloc-txt, .bloc-txt-txt, .bloc-img-txt, .bloc-txt-img, .bloc-img {
+	margin:0;
+	padding:0 5px 0 5px;
+	clear:both;
+}
+
+
+.bloc-txt-txt .richtext, .bloc-img-txt .richtext, .bloc-img-txt .image,
+.bloc-txt-img .richtext, .bloc-txt-img .image  {
+	margin:0 ;
+	width:48%;
+	float:left;
+}
+
+
+.bloc-sep {
+	width:20px;
+	margin:0;
+	padding:0;
+	float:left;
+}

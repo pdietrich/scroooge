@@ -1,0 +1,47 @@
+<% content_for :section2 do %>
+
+	<div class="separator"></div>
+
+<% end %>
+
+<% # content_for :section3 do %>
+
+	<div class="title">Sign up for a new account</div>
+	
+	<div class="container">
+		<div class="containerTop"></div>
+		<div class="containerContent">
+	
+			<% form_for :person do |f| %>
+				<table cellspacing="0" width="100%">
+					<tr>
+						<td class="label"><label for="name">Name</label></td>
+						<td class="input"><%= f.text_field :name, "maxlength" => 50 %></td>
+					</tr>
+					<%= table_error_message_on :person, :name %>
+					<tr>
+						<td class="label"><label for="email">Email address (login)</label></td>
+						<td class="input"><%= f.text_field :email, "maxlength" => 50 %></td>
+					</tr>
+					<%= table_error_message_on :person, :email %>
+					<tr>
+						<td class="label"><label for="password">Password</label></td>
+						<td class="input"><%= f.password_field :password %></td>
+					</tr>
+					<%= table_error_message_on :person, :password %>
+					<tr>
+						<td class="label"><label for="password_confirmation">Confirm</label></td>
+						<td class="input"><%= f.password_field :password_confirmation %></td>
+					</tr>
+					<%= table_error_message_on :person, :password_confirmation %>
+					<tr>
+						<td class="button" colspan="2"><%= submit_tag 'Go for it!' %></td>
+					</tr>
+				</table>
+			<% end %>
+		
+		</div>
+		<div class="containerBottom"></div>
+	</div>
+
+<% # end %>

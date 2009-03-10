@@ -1,0 +1,27 @@
+<h1>Editing currency</h1>
+
+<%= error_messages_for :currency %>
+
+<% form_for(@currency) do |f| %>
+  <p>
+    <b>Short code</b><br />
+    <%= f.text_field :short_code %>
+  </p>
+
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>format_options_string</b><br />
+    <%= f.text_field :format_options_string %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @currency %> |
+<%= link_to 'Back', currencies_path %>

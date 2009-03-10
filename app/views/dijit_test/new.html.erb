@@ -1,0 +1,66 @@
+<% content_for :additional_js do %>
+
+	<% # das hier wird bei den ganzen anderen JSs in den header eingefuegt. %>
+	dojo.require("dojo.parser");
+	dojo.require("dijit.layout.ContentPane");
+
+	dojo.require("dijit.Declaration");
+	dojo.require("dijit.Dialog");
+	dojo.require("dijit.form.TextBox");
+	dojo.require("dijit.form.Button");
+	
+    dojo.require("dijit.layout.TabContainer");
+	dojo.require("dijit.layout.SplitContainer");
+	dojo.require("dijit.layout.BorderContainer");
+	dojo.require("scroooge.Person");
+	dojo.require("scroooge.PayerList");
+<% end %>
+
+<div id="mainTabContainer" dojoType="dijit.layout.TabContainer" style="width:800px;height:100%">
+	<div id="simple_tab" dojoType="dijit.layout.ContentPane" title="simple" selected="false">
+		Once upon a time there was a dear little girl who was loved by
+		every one who looked at her, but most of all by her grandmother,
+		and there was nothing that she would not have given to the child.
+	</div>
+	<div dojoType="dijit.layout.ContentPane" title="advanced" selected="true">
+		<!--
+		<div id="payer_col">
+			<div dojoType="scroooge.Person" username="Hans Wurst"></div>
+			<div dojoType="scroooge.Person" username="Alwin Erlewein"></div>
+			<div dojoType="scroooge.Person" username="Hasni the Elephant and friends" id="hasni"></div>
+		</div>
+		-->
+		<div dojoType="scroooge.PayerList" id="payer_col"></div>
+		<div id="middle_col">
+			<button dojoType="dijit.form.Button" onclick="dijit.byId('payer_col').add_payer('Hasni');">
+				add Hasni
+			</button>
+			<button dojoType="dijit.form.Button" onclick="alert(dijit.byId('payer_col').getDescendants());">
+				how many?
+			</button>
+			<button dojoType="dijit.form.Button" onclick="alert(dijit.byId('payer_col').getChildren());">
+				Children?
+			</button>
+			<button dojoType="dijit.form.Button" onclick="dijit.byId('payer_col').destroyDescendants();">
+				remove all
+			</button>
+			<button dojoType="dijit.form.Button" onclick="dijit.byId('hasni').blink()">
+				blink
+			</button>
+		</div>
+		<div id="receiver_col">
+			<div dojoType="scroooge.Person" username="Hasni the Elephant" id="hasni"></div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	var people = {
+		<%= friends.map{|f| "#{f.id}: {id: #{f.id}, name: '#{f.name}', avatar_url: '#{f.avatar_url}' }" }.join(",\n\t\t") %>
+	};
+//	dojo.addOnLoad(dunction(){
+//		dojo.byId("new_bill_form").
+//	});
+</script>
+

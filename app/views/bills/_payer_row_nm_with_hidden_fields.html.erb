@@ -1,0 +1,11 @@
+<div class="person">
+	<table class="person">
+		<tr>
+			<td class="gravatar"><img src="/images/non_member.jpg" alt="non-member" /></td>
+			<td class="description">#{name} &lt;#{email}&gt; (will be invited)</td>
+			<td><button dojoType="dijit.form.Button" onclick="display_payer_form();return false;">change</button></td>
+		</tr>
+	</table>
+	<input type="hidden" name="bill[payer_name]" value="#{name}" />
+	<input type="hidden" name="bill[payer_email]" value="#{email}" />
+</div>

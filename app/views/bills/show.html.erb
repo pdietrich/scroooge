@@ -1,0 +1,37 @@
+<% content_for :section2 do %>
+<div id="wrapperSection2">
+	<div id="section2">
+		
+		<%= render :partial => 'layouts/container', :locals => { :description => 'Your total balance', :total_amount => '&nbsp;', :amount => price( current_person.balance ) }%>
+
+		<div id="section2Tabs">
+			<div class="tab blur"><%= link_to 'People', url_for( :controller => 'people', :action => 'index' ) %></div>
+			<div class="tab focus"><%= link_to 'Bills', url_for( :controller => 'bills', :action => 'index' ) %></div>
+		</div>
+		<div class="clear"></div>
+		<a href="<%= url_for(:controller => 'bills', :action => 'new') %>">
+			<img alt="New Bill" src="/images/new_bill_button.png" id="new_bill_button"/>
+		</a>
+	</div>
+</div>
+<% end %>
+
+<div>&nbsp;</div>
+
+<% container do %>
+	<table class="bill_details">
+		<tr><th>Name:</th><td><%=h @bill.name %></td></tr>
+		<tr><th>Created at:</th><td><%= @bill.created_at.year %>-<%= @bill.created_at.month %>-<%= @bill.created_at.day %></td></tr>
+		<tr><th>Payed by:</th><td><%=h @bill.payer.name %></td></tr>
+		<tr><th>Amount:</th><td class="price"><%= price( @bill.amount, :currency => @bill.currency, :no_colour => true ) %></td></tr>
+		<tr><th>Shared by:</th><td></td></tr>
+		<% for participation in @bill.participations %>
+			<tr>
+				  <td><%=h participation.participant.name %></td>
+				  <td class="price"><%= price( participation.amount, :currency => @bill.currency, :no_colour => true ) %></td>
+			</tr>
+		<% end %>
+		<tr><td></td><td></td></tr>
+		<tr><td></td><td style="align:right;"><%= link_to 'delete this bill', {:controller => 'bills', :action => 'destroy', :id => @bill.id}, { :method => 'post', :confirm => 'Are you sure you want to delete this bill?'} %></span></td></tr>
+	</table>
+<% end %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  bill_id: 1
+  participant_id: 1
+  factor: 1
+  amount: 3.33
+  creator_id: 1
+  created_at: 2008-06-07 13:48:13
+  updated_at: 2008-06-07 13:48:13
+  currency_id: 1
+
+two:
+  id: 2
+  bill_id: 1
+  participant_id: 2
+  factor: 2
+  amount: 6.66
+  creator_id: 1
+  created_at: 2008-06-07 13:48:13
+  updated_at: 2008-06-07 13:48:13
+  currency_id: 1

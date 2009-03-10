@@ -1,0 +1,100 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+
+	<title>scroOoge</title>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta name="description" content="scroOoge" />
+	<meta name="author" content="instant.bonsai (www.instantbonsai.net)" />
+  	<meta name="language" content="en" />
+
+  
+	<link rel="shortcut icon" href="/stylesheets/icons/12.png" />
+  	<link rel="stylesheet" type="text/css" href="/stylesheets/master.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/screen.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/lightview.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/scaffold.css" />
+
+	<script type="text/javascript" src="/javascripts/lib/prototype/prototype.js"></script>
+	<script type="text/javascript" src="/javascripts/lib/scriptaculous/scriptaculous.js?load=effects"></script>
+	<script type="text/javascript" src="/javascripts/lib/lightview/lightview.js"></script>
+
+	<script type="text/javascript" src="/javascripts/functions.js"></script>	
+	
+</head>
+<body>
+
+	<div id="wrapperHeader">
+		<div id="header">
+			<img id="logo" src="/stylesheets/images/img_logo.gif" alt="scroOoge" />
+			<a href="http://en.gravatar.com/"><img id="gravatar" src="/stylesheets/images/dummyavatar.jpg" alt="gravatar.com" title="admin&#64;instantbonsai&#46;net" /></a>
+			admin&#64;instantbonsai&#46;net
+		</div>		
+	</div>
+
+	<div id="wrapperSection1">	
+		<div id="section1">
+			<div class="total">
+				<div class="totalTop"></div>
+				<div class="totalBody">
+					<table cellspacing="0">
+						<tr>
+							<td class="description">Total</td>
+
+							<td class="value"><span class="minus">-23,42 €</span></td>
+						</tr>
+					</table>
+				</div>
+				<div class="totalBottom"></div>				
+			</div>
+			<div id="navDetails">
+				<!--
+				<a class="focus" href="#">people</a>
+				<a href="#">bills</a>
+				-->
+				<%= link_to 'people', url_for( :controller => :people, :action => :index ) %>
+				<%= link_to 'bills', url_for( :controller => :bills, :action => :index ) %>
+				<%= link_to 'logout', url_for( :controller => :account, :action => :logout ) %>
+			</div>
+		</div>
+	</div>
+
+	<div id="wrapperSection2">	
+		<div id="section2">
+			<!--
+			<table cellspacing="0">
+				<tr>
+
+					<td class="description"><img class="gravatar" src="/stylesheets/images/dummyavatar.jpg" alt="gravatar.com" title="admin&#64;instantbonsai&#46;net" />admin&#64;instantbonsai&#46;net</td>
+					<td class="value"><span class="minus">-23,42 €</span></td>
+				</tr>
+				<tr>
+					<td class="description"><img class="gravatar" src="/stylesheets/images/dummyavatar.jpg" alt="gravatar.com" title="admin&#64;instantbonsai&#46;net" />admin&#64;instantbonsai&#46;net</td>
+
+					<td class="value"><span class="minus">-23,42 €</span></td>
+				</tr>
+				<tr>
+					<td class="description"><img class="gravatar" src="/stylesheets/images/dummyavatar.jpg" alt="gravatar.com" title="admin&#64;instantbonsai&#46;net" />admin&#64;instantbonsai&#46;net</td>
+					<td class="value"><span class="plus">+23,42 €</span></td>
+				</tr>								
+			</table>
+			-->
+			
+			<div>
+				<%= yield %>
+			</div>
+
+		</div>
+		<!--
+		<div id="footer">
+			&copy; 2008 <a href="http://www.instantbonsai.net">instant.bonsai</a> &nbsp;|&nbsp; all rights reserved
+		</div>
+		-->
+	</div>
+
+</body>
+</html>

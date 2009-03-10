@@ -1,0 +1,24 @@
+<h1>Listing currencies</h1>
+
+<table>
+  <tr>
+    <th>Short code</th>
+    <th>Name</th>
+    <th>format_options_string</th>
+  </tr>
+
+<% for currency in @currencies %>
+  <tr>
+    <td><%=h currency.short_code %></td>
+    <td><%=h currency.name %></td>
+    <td><%=h currency.format_options_string %></td>
+    <td><%= link_to 'Show', currency %></td>
+    <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
+    <td><%= link_to 'Destroy', currency, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New currency', new_currency_path %>

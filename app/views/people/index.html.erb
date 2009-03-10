@@ -1,0 +1,31 @@
+<% content_for :section2 do %>
+
+<div id="wrapperSection2">
+	<div id="section2">
+		
+		<%= render :partial => 'layouts/container', :locals => { :description => 'Your total balance', :total_amount => '&nbsp;', :amount => price( current_person.balance ) }%>
+
+		<div id="section2Tabs">
+			<div class="tab focus"><%= link_to 'People', url_for( :controller => 'people', :action => 'index' ) %></div>
+			<div class="tab blur"><%= link_to 'Bills', url_for( :controller => 'bills', :action => 'index' ) %></div>
+		</div>
+		<div class="clear"></div>
+		<a href="<%= url_for(:controller => 'bills', :action => 'new') %>">
+			<img alt="New Bill" src="/images/new_bill_button.png" id="new_bill_button"/>
+		</a>
+	</div>	
+</div>
+
+<% end %>
+
+<h2>Your balance with other people:</h2>
+<% for deptor in @deptors_and_creditors %>
+	<div onclick="">
+		<%= render :partial => 'people/person_row', :locals => { :person => deptor }%>
+	</div>
+<% end %>
+<h2>Description:</h2>
+<p>
+	<span style="color:red;">Red</span> means you owe the person.<br />
+	<span style="color:green;">Green</span> means the person owes you.
+</p>

@@ -1,0 +1,135 @@
+
+<% content_for :section2 do %>
+
+<div id="wrapperSection2">
+	<div id="section2">
+		
+		<%= render :partial => 'layouts/container', :locals => { :description => 'Your total balance', :total_amount => '&nbsp;', :amount => price( current_person.balance ) }%>
+		
+		<div id="section2Tabs">
+			<div class="tab blur"><a href="<%= url_for(:controller => 'people', :action => 'index') %>">People</a></div>
+			<div class="tab blur"><a href="<%= url_for(:controller => 'bills', :action => 'index') %>">Bills</a></div>
+		</div>				
+		<div class="clear"></div>
+		
+	</div>	
+</div>
+
+<% end %>
+
+<% container do %>
+	<div id="bill_fields">
+		<input type="text" id="bill_name" name="bill_name" value="Description" />
+		<div id="amount_field">
+			<input type="text" id="bill_amount" name="bill_amount" />
+			<label id="bill_amount_label" for="bill_amount"><%= current_person.currency.short_code %></label>
+		</div>
+		<div id="payer_field">
+			<label for="payer_id">Payer</label>
+			<%= friend_select_box( :name => 'payer_id', :selected => current_person.id) %>
+		</div>
+	</div>
+	
+	<h2 style="text-align:center">Please choose everyone who is sharing the bill:</h2>
+	<table id="participant_table">
+		<thead>
+			<tr>
+				<th>name</th>
+				<th>factor</th>
+			</tr>
+		</thead>
+		<tbody id="participants">
+			<tr class="participant_row_template">
+				<td class="user_col">
+					<span class="user_id"><%= current_person.id %></span>
+					<span class="user_name"><%= current_person.name %></span>
+				</td>
+				<td class="factor_col"><input type="text" class="factor" name="factor" value="1.0" /></td>
+				<td><button class="remove_person">Remove Person</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<div id="add_person">
+		<label for="person_id">Add a person</label>
+		<%= friend_select_box( :name => 'person_id', :blank => true) %>
+	</div>
+	
+	<button id="create_bill_button">Create Bill</button>
+<% end %>						
+
+<% content_for :javascript do %>
+<script type="text/javascript">
+// <!--
+$(document).ready(function() {
+	$('button.remove_person').click(function() {
+		$(this).closest('.participant_row').remove();
+	});
+	function rowFromTemplate() {
+		return $('tr.participant_row_template').clone(true)
+		.removeClass('participant_row_template')
+		.addClass('participant_row');
+	}
+	// add a row for the user who creates the bill:
+	$('#participants').append( rowFromTemplate() );
+	
+	$('#person_id').change( function() {
+		var personID = $('#person_id').val();
+	   	var personName = $('#person_id :selected').text();
+	
+		if( personID && personName ) {
+   			var row = rowFromTemplate();
+   			row.find('.user_id').text( personID );
+   			row.find('.user_name').text( personName );
+   			$('#participants').append( row );
+			$('#person_id').val('');
+			row.find('.factor').focus();
+		}
+	});
+
+	$('#create_bill_button').click(function() {
+		var billName = $('#bill_name').val();
+		var billAmount = $('#bill_amount').val()
+		
+		var error = true;
+		if( !billName ) alert("please enter a short description!");
+		else if( !billAmount ) alert( "please enter the total amount!" );
+		else error = false;
+		
+		var data = {
+			bill_name: billName,
+			bill_amount: billAmount,
+			payer_id: $('#payer_id').val(),
+			participants: $.map( $('.participant_row'), function(r){
+				var row = $(r);
+				var factor = parseFloat( row.find('.factor').val() );
+				if( !factor && ! (factor===0) ) {
+					alert( 'please enter a factor for ' + row.find('.user_name').text() );
+					error = true;
+				}
+				return {
+					user_id: row.find('.user_id').text(),
+					factor: factor
+				}
+			})
+		};
+		
+		if( error ) return;
+		
+		$.post( '<%= url_for(:action => "create") %>', {
+			authenticity_token: '<%= form_authenticity_token %>',
+			data: $.toJSON(data)
+		}, function( res ) {
+			if( res.errors ) {
+				flash( "sorry an error has hapened on the server!" );
+				console.log( res.errors );
+			}
+			else {
+				window.location = '<%= url_for( :controller => 'bills', :action => 'index' ) %>';
+			}
+			
+		}, 'json');
+	});
+});
+// -->
+</script>
+<% end %>

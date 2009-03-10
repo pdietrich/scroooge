@@ -1,0 +1,20 @@
+<div dojoType="dijit.Dialog" id="<%= who %>_dialog" title="<%= who %> dialog"
+    execute="non_member_request( arguments[0], '<%= who %>' );">
+  <table>
+    <tr>
+      <td><label for="name">Name: </label></td>
+      <td><input dojoType="dijit.form.TextBox" type="text" name="name"></td>
+    </tr>
+    <tr>
+      <td><label for="loc">E-Mail: </label></td>
+      <td>
+      	<input dojoType="dijit.form.TextBox" type="text" name="email" id="<%= who %>_email_field">
+		<div id="<%= who %>_email_error">&nbsp;</div>
+	  </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <button dojoType="dijit.form.Button" type="submit" onclick="return validate_email( '<%= who %>' );">OK</button></td>
+    </tr>
+  </table>
+</div>

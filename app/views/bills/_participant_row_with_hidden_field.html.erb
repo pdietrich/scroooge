@@ -1,0 +1,11 @@
+<div class="person" id="participation_#{index}">
+	<table class="person">
+		<tr>
+			<td class="gravatar"><img src="#{avatar_url}" alt="avatar" /></td>
+			<td class="description">#{name}</td>
+			<td class="amount">#{amount}</td>
+			<td><button dojoType="dijit.form.Button" onclick="Element.remove('participation_#{index}');return false;">remove</button></td>
+		</tr>
+	</table>
+	<input type="hidden" name="participants[#{index}][id]" value="#{id}" />
+</div>

@@ -1,0 +1,10 @@
+<div class="person">
+	<table class="person">
+		<tr>
+			<td class="gravatar"><img src="#{avatar_url}" alt="avatar" /></td>
+			<td class="description">#{name}</td>
+			<td><button dojoType="dijit.form.Button" onclick="display_payer_form();return false;">change</button></td>
+		</tr>
+	</table>
+	<input type="hidden" name="bill[payer_id]" value="#{id}" />
+</div>

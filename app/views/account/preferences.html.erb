@@ -1,0 +1,174 @@
+<% content_for :section2 do %>
+
+<div id="wrapperSection2">
+	<div id="section2">
+		
+		<%= render :partial => 'layouts/container', :locals => { :description => 'Your total balance', :total_amount => '&nbsp;', :amount => price( current_person.balance ) }%>
+		
+		<div id="section2Tabs">
+			<div class="tab blur"><a href="<%= url_for(:controller => 'people', :action => 'index') %>">People</a></div>
+			<div class="tab blur"><a href="<%= url_for(:controller => 'bills', :action => 'index') %>">Bills</a></div>
+		</div>				
+		<div class="clear"></div>
+		
+	</div>	
+</div>
+
+<% end %>
+
+<% container do %>
+	<% form_for :person, current_person, :url => url_for( :action => 'preferences' ) do |f| %>
+
+		<div class="title">Edit your account</div>
+		
+		<table cellspacing="0" width="100%">
+			<tr>
+				<td class="label"><label for="name">Name</label></td>
+				<td class="input">
+					<%= f.text_field :name, :maxlength => 255 %>
+					<div><%= f.error_message_on :name %>&nbsp;</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="email">Email address (login)</label></td>
+				<td class="input">
+					<%= f.text_field :email, :maxlength => 255 %>
+					<div><%= f.error_message_on :email %>&nbsp;</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="currency">Currency</label></td>
+				<td class="input">
+					<%= f.select( :currency_id, Currency.find(:all).map{|c| [c.name, c.id]}, {:include_blank => false} ) %>
+					<div><%= f.error_message_on :currency_id %>&nbsp;</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="button" colspan="2">
+					<span class="success"><%= flash[:notice] %></span><%= submit_tag 'Save' %>
+				</td>
+			</tr>	
+		</table>
+	<% end %><% # form %>
+<% end %>
+
+<% container do %>
+	<% form_for :person, current_person, :url => url_for( :action => 'preferences' ) do |f| %>
+		<div class="title">Edit your password</div>
+		
+		<table cellspacing="0" width="100%">			
+			<tr>
+				<td class="label"><label for="password">Password</label></td>
+				<td class="input">
+					<%= f.password_field :password %>
+					<div><%= f.error_message_on :password %>&nbsp;</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="label"><label for="password_confirmation">Confirm</label></td>
+				<td class="input">
+					<%= f.password_field :password_confirmation %>
+					<div><%= f.error_message_on :password_confirmation %>&nbsp;</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="button" colspan="2">
+					<span class="success"><%= flash[:notice] %></span><%= submit_tag 'Save' %>
+				</td>
+			</tr>						
+
+		</table>
+				
+	<% end %><% # form %>
+<% end %>
+
+
+
+
+
+
+<% if false %>
+<% # content_for :section3 do %>
+
+	<% form_for :person, current_person, :url => url_for( :action => 'preferences' ) do |f| %>
+
+		<div class="title">Edit your account</div>
+		
+		<div class="container">
+			<div class="containerTop"></div>
+			<div class="containerContent">
+
+				<table cellspacing="0" width="100%">
+					<tr>
+						<td class="label"><label for="name">Name</label></td>
+						<td class="input"><%= f.text_field :name %></td>
+					</tr>
+					<%= table_error_message_on current_person, :name %>
+					<tr>
+						<td class="label"><label for="email">Email address (login)</label></td>
+						<td class="input"><%= f.text_field :email %></td>
+					</tr>
+					<%= table_error_message_on current_person, :email %>			
+				</table>
+
+			</div>
+			<div class="containerBottom"></div>
+		</div>
+		
+		<div class="title">Edit your password</div>
+		
+		<div class="container">
+			<div class="containerTop"></div>
+			<div class="containerContent">
+
+				<table cellspacing="0" width="100%">			
+					<tr>
+						<td class="label"><label for="password">Password</label></td>
+						<td class="input"><%= f.password_field :password %></td>
+					</tr>
+					<%= table_error_message_on current_person, :password %>
+					<tr>
+						<td class="label"><label for="password_confirmation">Confirm</label></td>
+						<td class="input"><%= f.password_field :password_confirmation %></td>
+					</tr>
+					<%= table_error_message_on current_person, :password_confirmation %>
+
+				</table>
+				
+			</div>
+			<div class="containerBottom"></div>
+		</div>
+		
+		<div class="container">
+			<div class="containerTop"></div>
+			<div class="containerContent">
+
+				<table cellspacing="0" width="100%">			
+					<tr>
+						<td class="label"><label for="currency">Currency</label></td>
+						<td class="input"><%= f.select( :currency_id, Currency.find(:all).map{|c| [c.name, c.id]}, {:include_blank => false} ) %></td>
+					</tr>
+					<%= table_error_message_on current_person, :currency %>
+
+				</table>
+				
+			</div>
+			<div class="containerBottom"></div>
+		</div>
+		
+		<div class="container">
+			<div class="containerTop"></div>
+			<div class="containerContent">
+
+				<table cellspacing="0" width="100%">			
+					<tr>
+						<td class="button" colspan="2"><span class="success"><%= flash[:notice] %></span><%= submit_tag 'Save' %></td>
+					</tr>						
+				</table>
+				
+			</div>
+			<div class="containerBottom"></div>
+		</div>					
+		
+	<% end %>
+<% end %>	

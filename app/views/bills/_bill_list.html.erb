@@ -1,0 +1,18 @@
+<% container do %>
+	<% line_counter ||= 99999999 -bills.size %>
+	<table class="bill_list">
+		<tr>
+			<th>Description</th>
+			<th>&nbsp;Bill&nbsp;Total&nbsp;</th>
+			<th>&nbsp;Your&nbsp;Part&nbsp;</th>
+		</tr>
+		<% for bill in bills %>
+			<% line_counter += 1 %>
+			<tr <%= (line_counter % 2 == 0) ? 'class="highlighted_line"' : '' %>>
+				<td><a href="<%= url_for(:controller => 'bills', :action => 'show', :id => bill.id) %>"><%=h bill.name %></a> (<%= "#{bill.created_at.day}/#{bill.created_at.month}/#{bill.created_at.year}" %>)</td>
+				<td class="price"><%= price( bill.amount, :no_colour => true ) %></td>
+				<td class="price"><%= price( bill.amount_for( current_person.id ) ) %></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>

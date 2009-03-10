@@ -1,0 +1,27 @@
+<% if @blubb %>
+ lsdjfgsfgegghwerfqwe
+<% end %>
+
+<table>
+  <tr>
+    <th>Participant</th>
+    <th>Factor</th>
+	<th></th>
+  </tr>
+
+<% for participation in @participations %>
+<tr>
+  <td><%=h participation.participant.name %></td>
+  <td><%=h participation.factor %></td>
+  <td><%= link_to 'Destroy', bill_participation_path( @bill, participation ), :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+<% end %>
+<tr><td colspan="3"><%= error_messages_for :participation %></td></tr>
+<% form_for( [@bill, @participation] ) do |f| %> <!--  -->
+<tr>
+	<td><%= f.select( :participant_id, Person.find(:all).map{|p| [p.name, p.id]}, {:include_blank => true}, {} )%></td>
+	<td><%= f.text_field :factor %></td>
+	<td><%= f.submit "Add" %></td>
+</tr>
+<% end %>
+</table>

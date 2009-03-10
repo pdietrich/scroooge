@@ -1,0 +1,5 @@
+					Who is paying the bill?
+					<%= select( :payer, :id, current_person.known_people.map{|p| [p.name, p.id]}, {:include_blank => true }, {:onChange => "set_member_payer( $('payer_id').value );"} ) %>
+					<button dojoType="dijit.form.Button" onclick="dijit.byId('payer_dialog').show();return false;">choose a non-member</button>
+					
+					<% # | <b> link_to_function 'choose a non-member', 'display_non_member_form( "payer" );' </b> %>

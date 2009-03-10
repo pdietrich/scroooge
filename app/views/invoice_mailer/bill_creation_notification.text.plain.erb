@@ -1,0 +1,27 @@
+<% logger.info "sending email for #{@person.name}" %>
+<% if @person.has_logged_in_before? %>
+Hello <%= @person.name %>,
+
+<%= @current_person.name %> has scroOoged the bill "<%= @bill.name %>" for you.
+<% else %>
+Hi there!
+
+<%= @current_person.name %> has invited you to the scroOoge and has scroOoged the bill "<%= @bill.name %>" for you.
+<% end %>
+
+To log into your account click here:
+<%= url_for( :only_path => false, :host => $hostname, :controller => 'direct_login', :action => 'login', :code => @direct_login_identifier.code ) %>
+
+The total amount of the bill is <%= number_to_currency( @bill.amount, {:unit=>"£", :format=>"%u%n"} ) %>. Your part in it is <%= number_to_currency( @bill.amount_for( @person ), {:unit=>"£", :format=>"%u%n"} ) %>.
+
+The following people participated in the bill:
+<% for participation in @bill.participations %>
+	<%= @person == participation.participant ? 'you' : participation.participant.name %> (<%= number_to_currency( participation.amount, {:unit=>"£", :format=>"%u%n"} ) %>)
+<% end %>
+
+Your current scroOoge balance is <%= number_to_currency( @person.balance, {:unit=>"£", :format=>"%u%n"} ) %>.
+
+Thank you for using the scroOoge!
+
+
+PS: If you have any suggestions or complaints, please let us know!

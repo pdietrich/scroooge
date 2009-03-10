@@ -1,0 +1,23 @@
+<% @line_counter ||= 0; @line_counter += 1 %>
+<div class="container">
+	<div class="containerTop"></div>
+	<div class="containerContent">
+
+		<table cellspacing="0">
+			<tr>
+				<td class="gravatar"><img src="/stylesheets/images/img_gravatar.png" alt="avatar" title="avatar" /></td>
+				<% # hier ist ein Beispiel, wie du mit dem line counter jede 4te Zeile umfaerben kannst %>
+				<% # (verwendet modulo ('%'-operator) und funktionales if-then-else ('?:'-operator - funktioniert wie in Java oder C) ): %>
+				<td class="description" <%= (@line_counter % 4 == 0) ? 'style="color:blue;"' : '' %> >
+					<%= @line_counter %>. <%= bill.description %> (<%= "#{bill.created_at.day}/#{bill.created_at.month}/#{bill.created_at.year}" %>)
+				</td>
+				
+				<td class="price"><%= price( bill.amount, :no_colour => true ) %></td>
+				<td class="price"><%= price( bill.amount_for( current_person.id ) ) %></td>
+
+			</tr>
+		</table>
+	
+	</div>
+	<div class="containerBottom"></div>
+</div>

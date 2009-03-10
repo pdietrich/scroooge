@@ -1,0 +1,482 @@
+/* globals */
+
+a:link, a:visited {
+	color: #666;
+	text-decoration: none;
+}
+
+	a:hover, a:active {
+		color: #333;
+		text-decoration: underline;
+	}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+input[type=text], input[type=password], textarea, select {
+	padding: 5px;
+	font-family: Arial, Tahoma, sans-serif;
+	font-size: 14px;
+	color: #666;
+	background: #fff url(images/input_bg.png) repeat-x;
+	border: 1px solid #ccc;		
+}
+
+div.fieldWithErrors {
+	display: inline;
+}
+
+	div.fieldWithErrors input, input.fieldWithErrors {
+		border: 1px dashed red;
+	}
+
+	input.blur, textarea.blur {
+		color: #666;
+		border: 1px solid #ccc;
+	}
+	
+		div.fieldWithErrors input.blur, div.fieldWithErrors textarea.blur {
+			border: 1px dashed red;
+		}
+
+	input.focus, textarea.focus, input[type=text]:focus, input[type=password]:focus, textarea:focus {
+		color: #444;
+		border: 1px solid #999;
+	}
+	
+		div.fieldWithErrors input.focus, div.fieldWithErrors textarea.focus, div.fieldWithErrors input[type=text]:focus, div.fieldWithErrors input[type=password]:focus, div.fieldWithErrors textarea:focus {
+			border: 1px dashed red;
+		}
+
+
+/* layout */ 
+
+html {
+	min-height: 100%;
+	overflow-y: scroll;	
+}
+
+body {
+	min-height: 100%;
+	color: #666;
+	font-family: Arial, Tahoma, sans-serif;
+	font-size: 14px;
+	background-color: #f1f1f1;
+}
+
+	div.title {
+		padding: 0 14px 10px;
+		font-weight: bold;
+	}
+	
+		div.title span.control {
+			float: right;
+		}
+		
+			div.title span.control a:link, div.title span.control a:visited {
+				text-decoration: underline;
+			}			
+
+	div.container {
+		margin-bottom: 10px;
+		width: 700px;
+	}
+	
+		div.container.link:hover {
+			cursor: pointer;
+		}		
+	
+		div.container div.containerTop {
+			width: 700px;
+			height: 14px;
+			background: url(images/div_containerTop.png) no-repeat;
+		}
+		
+		div.container div.containerContent {
+			width: 692px;
+			padding: 0 4px;
+			background: url(images/div_containerContent.png) repeat-y;
+		}
+		
+			div.container div.containerContent td {
+				padding: 0 10px;
+
+				vertical-align: middle;
+			}
+		
+			div.container div.containerContent td.gravatar {
+				width: 40px;
+			}
+			
+			div.container div.containerContent td.description {
+				padding: 0;
+				width: 470px;
+			}
+			
+				div.container.link:hover div.containerContent td.description {
+					color: #333;
+					text-decoration: underline;
+				}				
+			
+			div.container div.containerContent td.totalAmount {
+				width: 75px;
+				text-align: right;
+				color: #999;
+			}
+
+			div.container div.containerContent td.amount {
+				width: 75px;
+				font-weight: bold;
+				text-align: right;
+			}
+			
+								
+				
+			div.container div.containerContent td.label {
+				padding: 5px 10px;
+				text-align: right;
+			}
+			
+				div.container div.containerContent td.label label {
+					font-size: 11px;	
+				}
+			
+			div.container div.containerContent td.input {
+				padding: 5px 10px;
+				width: 250px;
+			}
+			
+				div.container div.containerContent td.input input, div.container div.containerContent td.input select {
+					width: 250px;
+				}
+				
+			div.container div.containerContent td.error {
+				padding: 10px;
+				color: #ff0000;
+			}					
+				
+			div.container div.containerContent td.button {
+				padding: 5px 10px;
+				text-align: right;
+			}
+			
+				div.container div.containerContent td.button input[type=submit] {
+					margin-left: 10px;
+				}				
+			
+				div.container div.containerContent td.button span.success {
+					color: green;	
+				}
+				
+				div.container div.containerContent td.button span.error {
+					color: red;	
+				}
+		
+		div.container div.containerBottom {
+			width: 700px;
+			height: 14px;
+			background: url(images/div_containerBottom.png) no-repeat;
+		}
+
+	div.separator {
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #fff;
+	}
+
+	div#wrapperSection1 {
+		background-color: #f1f1f1;
+	}
+	
+		div#section1 {
+			margin: 0 auto;
+			padding: 10px 0;
+			width: 700px;
+		}
+
+			div#section1 div#signin {
+				float: left;
+				line-height: 41px;
+			}
+		
+			div#section1 img#logo {
+				float: right;
+			}
+
+	div#wrapperSection2 {
+		background: url(images/div_section2_bg.png) top repeat-x;
+	}		
+
+		div#section2 {
+			position: relative;
+			margin: 0 auto;
+			padding-top: 19px;
+			width: 700px;
+		}
+		
+			div#section2Tabs {
+				margin-top: 9px;
+				float: right;
+			}
+			
+				div#section2Tabs div.tab {
+					padding: 4px 4px 0;
+					width: 120px;
+					height: 25px;
+					float: left;
+					font-weight: bold;
+					text-align: center;
+					line-height: 25px;
+				}
+				
+				div#section2Tabs div.tab.focus {
+					background: url(images/div_tab_focus.png) top no-repeat;	
+				}
+				
+				div#section2Tabs div.tab.blur {
+					background: url(images/div_tab_blur.png) top no-repeat;	
+				}			
+		
+	div#wrapperSection3 {
+		background-color: #f1f1f1;		
+	}
+	
+		div#section3 {
+			margin: 0 auto;
+			padding: 25px 0;
+			width: 700px;
+		}
+		
+			div#footer {
+				margin-top: 10px;
+				padding: 0 10px;
+				font-size: 11px;
+				text-align: right;
+			}
+
+div.formError {
+	display:inline;
+	color: red;
+}
+
+tr.highlighted_line {
+	background-color: #e8ffdd;
+}
+
+span.minus {
+	color: #ff0000;
+}
+
+span.plus {
+	color: green; /* #77AF20; */
+}
+
+table.bill_list {
+	width:100%;
+}
+
+table.bill_list th {
+	font-weight: bold;
+	padding: 4px 0 4px 0;
+}
+
+table.bill_list td {
+	padding: 4px 0 4px 0;
+}
+
+table.bill_list td.price {
+	text-align: right;
+}
+
+table.bill_details{
+	width:100%;
+}
+
+table.bill_details th{
+	font-weight: bold;
+}
+table.bill_details td.price {
+	text-align: right;
+}
+
+
+
+	div.pd_container {
+		margin-bottom: 10px;
+		width: 700px;
+	}
+		
+		div.pd_container div.pd_containerTop {
+			width: 700px;
+			height: 14px;
+			background: url(images/div_containerTop.png) no-repeat;
+		}
+		
+			div.pd_container div.pd_containerContent {
+				width: 692px;
+				padding:  0 4px;
+				background: url(images/div_containerContent.png) repeat-y;
+			}
+			
+				div.pd_container div.pd_containerContent div {
+					margin: 0 12px 0 12px;
+					position: relative;
+					padding-bottom: 10px;
+				}
+		
+		div.pd_container div.pd_containerBottom {
+			width: 700px;
+			height: 14px;
+			background: url(images/div_containerBottom.png) no-repeat;
+		}
+
+/* new stuff */
+
+#flash{
+	display:none;
+	position:absolute;
+	top: 0;
+	left: 30px;
+	width: 600px;
+	font-size: 20px;
+	background-color: #ff9;
+	z-index:10;
+	margin: 0 auto;
+	padding: 20px 20px;
+	border: 1px solid #555;
+	text-align: center;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#new_bill_button {
+	position: absolute;
+	left: 4px;
+	bottom: -20px;
+	border: none;
+}
+
+option {
+	padding: 5px 0 5px 0;
+	font-size: 14px;
+}
+
+option.first {
+	font-weight: bold;
+	text-color: #333;
+}
+
+#bill_fields {
+	position: relative;
+	height: 140px;
+}
+
+#bill_fields > * {
+	position: absolute;
+}
+
+#bill_name{
+	left: 0;
+	top: 15px;
+	width: 630px;
+	font-size: 30px;
+}
+
+#bill_fields div{
+	margin: 0;
+	top: 80px;
+}
+
+div#payer_field{
+	left: 0	;
+}
+
+#payer_field select {
+	width: 440px;
+	height: 36px;
+	padding-top: 7px;
+	font-size: 18px;
+}
+
+#payer_field label {
+	margin-right: 4px;
+}
+
+div#amount_field {
+	right: 0;
+	font-size: 20px;
+}
+
+#amount_field input{
+	font-size: 20px;
+	text-align: right;
+	width: 70px;
+}
+
+/* new bill form participants */
+
+#participant_table {
+	width: 620px;
+	margin: 20px 30px 0 30px;
+}
+
+#participant_table td {
+	text-align: center;
+}
+
+#participants .participant_row_template {
+	display: none;
+}
+
+#participants .user_id {
+	display: none;
+}
+
+#participants .factor {
+	width: 35px;
+	text-align: center;
+}
+
+div#add_person {
+	margin: 30px 0 0px 150px;
+	padding-bottom: 70px;
+}
+
+#add_person label {
+	display: block;
+}
+
+#person_id {
+	width: 320px;
+}
+
+button {
+	width: 124px;
+	height: 36px;
+	background-color: white;
+	background-image: url("/images/button.png");
+	border: none;
+	font-size: 14px;
+}
+
+#create_bill_button {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}

@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+gbp:
+  short_code: GBP
+  name: British Pounds
+  format_options_string: '{ :unit => "&pound;", :format => "%u%n" }'
+
+eur:
+  short_code: EUR
+  name: Euro
+  format_options_string: '{ :unit => "&euro;", :format => "%n&nbsp;%u" }'
+
+usd:
+  short_code: USD
+  name: US Dollars
+  format_options_string: '{ :unit => "$", :format => "%u%n" }'
