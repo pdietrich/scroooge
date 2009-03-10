@@ -32,8 +32,40 @@
 	</div>
 </div>
 
-<% # section 2 content: %>
-<%= yield( :section2 ) %>
+<div id="wrapperSection2">
+	<div id="section2">
+		
+		<% # = render :partial => 'layouts/container', :locals => { :description => 'Your total balance', :total_amount => '&nbsp;', :amount => price( current_person.balance ) }%>
+
+		<% container do %>
+			<div class="person_entry">
+				<div class="avatar" style="background-image:url(<%= h(current_person.gravatar_url( :size => 56 )) + '&amp;d=wavatar' %>)"></div>
+			
+				<div class="person_name">
+					Your total balance
+				</div>
+				<div class="person_amount">
+					<%= price( current_person.balance ) %>
+				</div>
+			</div>
+		<% end %>
+
+		<div id="section2_tabs">
+			<a href="<%= url_for :controller => 'people', :action => 'index' %>">
+				<div class="tab <%= params[:controller] == 'people' ? 'focus' : 'blur' %>">People</div>
+			</a>
+			<a href="<%= url_for :controller => 'bills', :action => 'index' %>">
+				<div class="tab <%= params[:controller] == 'bills' ? 'focus' : 'blur' %>">Bills</div>
+			</a>
+		</div>
+		<div class="clear"></div>
+		<% unless params[:action] == 'new' %>
+			<a href="<%= url_for(:controller => 'bills', :action => 'new') %>">
+				<img alt="New Bill" src="/images/new_bill_button.png" id="new_bill_button"/>
+			</a>
+		<% end %>
+	</div>
+</div>
 
 <div id="wrapperSection3">
 	<div id="section3">

@@ -1,22 +1,4 @@
 
-<% content_for :section2 do %>
-
-<div id="wrapperSection2">
-	<div id="section2">
-		
-		<%= render :partial => 'layouts/container', :locals => { :description => 'Your total balance', :total_amount => '&nbsp;', :amount => price( current_person.balance ) }%>
-		
-		<div id="section2Tabs">
-			<div class="tab blur"><a href="<%= url_for(:controller => 'people', :action => 'index') %>">People</a></div>
-			<div class="tab blur"><a href="<%= url_for(:controller => 'bills', :action => 'index') %>">Bills</a></div>
-		</div>				
-		<div class="clear"></div>
-		
-	</div>	
-</div>
-
-<% end %>
-
 <% container do %>
 	<div id="bill_fields">
 		<input type="text" id="bill_name" name="bill_name" value="Description" />

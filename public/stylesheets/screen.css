@@ -228,14 +228,16 @@ body {
 			margin: 0 auto;
 			padding-top: 19px;
 			width: 700px;
+			height: 116px;
 		}
 		
-			div#section2Tabs {
-				margin-top: 9px;
-				float: right;
+			div#section2_tabs {
+				position: absolute;
+				bottom: 0;
+				right: 0;
 			}
 			
-				div#section2Tabs div.tab {
+				#section2_tabs div.tab {
 					padding: 4px 4px 0;
 					width: 120px;
 					height: 25px;
@@ -245,11 +247,11 @@ body {
 					line-height: 25px;
 				}
 				
-				div#section2Tabs div.tab.focus {
+				div#section2_tabs div.tab.focus {
 					background: url(images/div_tab_focus.png) top no-repeat;	
 				}
 				
-				div#section2Tabs div.tab.blur {
+				div#section2_tabs div.tab.blur {
 					background: url(images/div_tab_blur.png) top no-repeat;	
 				}			
 		
@@ -318,11 +320,14 @@ table.bill_details td.price {
 
 
 	div.pd_container {
-		margin-bottom: 10px;
+		position: relative;
+		padding: 0;
+		margin-bottom: 35px;
 		width: 700px;
 	}
 		
 		div.pd_container div.pd_containerTop {
+			position: absolute;
 			width: 700px;
 			height: 14px;
 			background: url(images/div_containerTop.png) no-repeat;
@@ -330,9 +335,9 @@ table.bill_details td.price {
 		
 			div.pd_container div.pd_containerContent {
 				position: relative;
+				top: 14px;
 				width: 652px;
 				padding: 0 24px;
-				margin: 0;
 				background: url(images/div_containerContent.png) repeat-y;
 			}
 			
@@ -345,8 +350,10 @@ table.bill_details td.price {
 			*/
 		
 		div.pd_container div.pd_containerBottom {
+			position: absolute;
 			width: 700px;
 			height: 14px;
+			bottom: -28px;
 			background: url(images/div_containerBottom.png) no-repeat;
 		}
 
@@ -402,7 +409,7 @@ div.person_entry {
 #new_bill_button {
 	position: absolute;
 	left: 4px;
-	bottom: -20px;
+	bottom: -14px;
 	border: none;
 }
 
