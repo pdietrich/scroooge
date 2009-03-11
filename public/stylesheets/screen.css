@@ -81,6 +81,7 @@ body {
 	background-color: #f1f1f1;
 }
 
+/*
 	div.title {
 		padding: 0 14px 10px;
 		font-weight: bold;
@@ -93,6 +94,7 @@ body {
 			div.title span.control a:link, div.title span.control a:visited {
 				text-decoration: underline;
 			}			
+*/
 
 	div.container {
 		margin-bottom: 10px;
@@ -237,7 +239,8 @@ body {
 				right: 0;
 			}
 			
-				#section2_tabs div.tab {
+				#section2_tabs .tab {
+					display: block;
 					padding: 4px 4px 0;
 					width: 120px;
 					height: 25px;
@@ -247,11 +250,11 @@ body {
 					line-height: 25px;
 				}
 				
-				div#section2_tabs div.tab.focus {
+				#section2_tabs .tab.focus {
 					background: url(images/div_tab_focus.png) top no-repeat;	
 				}
 				
-				div#section2_tabs div.tab.blur {
+				#section2_tabs .tab.blur {
 					background: url(images/div_tab_blur.png) top no-repeat;	
 				}			
 		
@@ -514,17 +517,38 @@ div#add_person {
 	font-size: 18px;
 }
 
-button {
+button, input[type=submit] {
 	width: 124px;
 	height: 36px;
 	background-color: white;
 	background-image: url("/images/button.png");
 	border: none;
 	font-size: 14px;
+	padding-bottom: 2px;
 }
 
 #create_bill_button {
 	position: absolute;
 	right: 22px;
 	bottom: 6px;
+}
+
+
+/* preferences */
+
+#account_prefs label {
+	float: left;
+	width: 180px;
+	text-align: right;
+	margin-right: 15px;
+}
+
+#account_prefs input[type=text], #account_prefs input[type=password], #account_prefs select {
+	position:relative;
+	width: 305px;
+}
+#account_prefs input[type=submit] {
+	position: relative;
+	bottom: 7px;
+	float:right;
 }

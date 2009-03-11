@@ -13,7 +13,7 @@ class Person < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
-  attr_accessible :name, :email,
+  attr_accessible :name, :email, :gravatar_email,
                   :password, :password_confirmation, :currency_id
 
   validates_presence_of     :currency_id
@@ -31,7 +31,7 @@ class Person < ActiveRecord::Base
   before_save :encrypt_password
 
 
-  is_gravtastic :with => :gravatar_email
+  is_gravtastic :with => :gravatar_email, :default => 'wavatar'
   def gravatar_email
     return self.read_attribute(:gravatar_email) || self.email
   end

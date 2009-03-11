@@ -10,8 +10,11 @@
   
 	<link rel="shortcut icon" href="/stylesheets/icons/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="/stylesheets/screen.css" />
+	<!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/ie.css" />
+	<![endif]-->
 </head>
-<body class="tundra">
+<body>
 
 <div id="wrapperSection1">
 	<div id="section1">
@@ -39,7 +42,7 @@
 
 		<% container do %>
 			<div class="person_entry">
-				<div class="avatar" style="background-image:url(<%= h(current_person.gravatar_url( :size => 56 )) + '&amp;d=wavatar' %>)"></div>
+				<div class="avatar" style="background-image:url(<%= h current_person.gravatar_url( :size => 56 ) %>)"></div>
 			
 				<div class="person_name">
 					Your total balance
@@ -52,10 +55,10 @@
 
 		<div id="section2_tabs">
 			<a href="<%= url_for :controller => 'people', :action => 'index' %>">
-				<div class="tab <%= params[:controller] == 'people' ? 'focus' : 'blur' %>">People</div>
+				<span class="tab <%= params[:controller] == 'people' ? 'focus' : 'blur' %>">People</span>
 			</a>
 			<a href="<%= url_for :controller => 'bills', :action => 'index' %>">
-				<div class="tab <%= params[:controller] == 'bills' ? 'focus' : 'blur' %>">Bills</div>
+				<span class="tab <%= params[:controller] == 'bills' ? 'focus' : 'blur' %>">Bills</span>
 			</a>
 		</div>
 		<div class="clear"></div>
