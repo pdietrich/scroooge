@@ -1,41 +1,21 @@
-<% content_for :section2 do %>
-
-	<div class="separator"></div>
-
-<% end %>
-
-<% # content_for :section3 do %>
-
-	<div class="title">Login to your account</div>
-	
-	<div class="container">
-		<div class="containerTop"></div>
-		<div class="containerContent">
-	
-			<% form_tag do %>
-				<table cellspacing="0" width="100%">
-					<tr>
-						<td class="label"><label for="login">Email address</label></td>
-						<td class="input"><%= text_field_tag 'login', '', :maxlength => 50 %></td>
-					</tr>
-					<tr>
-						<td class="label"><label for="password">Password</label></td>
-						<td class="input"><%= password_field_tag 'password' %></td>
-					</tr>
-				<% if @error_message %>
-					<tr>
-						<td class="label"></td>
-						<td class="error"><%= @error_message %></td>
-					</tr>
-				<% end %>
-					<tr>
-						<td class="button" colspan="2"><%= submit_tag 'Go for it!' %></td>
-					</tr>						
-				</table>
-			<% end %>
-		
+<% container do %>
+	<% form_tag do %>
+		<h2>Login to your account</h2>
+		<div class="form_fields">
+			<div>
+				<label for="login">Email address</label>
+				<%= text_field_tag 'login', '', :maxlength => 50 %>
+				<div>&nbsp;</div>
+			</div>
+			<div>
+				<label for="password">Password</label>
+				<%= password_field_tag 'password' %>
+				<div><span class="error_message"><%= @error_message %></span>&nbsp;</div>
+			</div>
+			<div>
+				<%= submit_tag 'Login' %>
+				<div style="clear:both"></div>
+			</div>
 		</div>
-		<div class="containerBottom"></div>
-	</div>
-	
-<% # end %>
+	<% end %>
+<% end %>

@@ -81,126 +81,6 @@ body {
 	background-color: #f1f1f1;
 }
 
-/*
-	div.title {
-		padding: 0 14px 10px;
-		font-weight: bold;
-	}
-	
-		div.title span.control {
-			float: right;
-		}
-		
-			div.title span.control a:link, div.title span.control a:visited {
-				text-decoration: underline;
-			}			
-*/
-
-	div.container {
-		margin-bottom: 10px;
-		width: 700px;
-	}
-	
-		div.container.link:hover {
-			cursor: pointer;
-		}		
-	
-		div.container div.containerTop {
-			width: 700px;
-			height: 14px;
-			background: url(images/div_containerTop.png) no-repeat;
-		}
-		
-		div.container div.containerContent {
-			width: 692px;
-			padding: 0 4px;
-			background: url(images/div_containerContent.png) repeat-y;
-		}
-		
-			div.container div.containerContent td {
-				padding: 0 10px;
-
-				vertical-align: middle;
-			}
-		
-			div.container div.containerContent td.gravatar {
-				width: 40px;
-			}
-			
-			div.container div.containerContent td.description {
-				padding: 0;
-				width: 470px;
-			}
-			
-				div.container.link:hover div.containerContent td.description {
-					color: #333;
-					text-decoration: underline;
-				}				
-			
-			div.container div.containerContent td.totalAmount {
-				width: 75px;
-				text-align: right;
-				color: #999;
-			}
-
-			div.container div.containerContent td.amount {
-				width: 75px;
-				font-weight: bold;
-				text-align: right;
-			}
-			
-								
-				
-			div.container div.containerContent td.label {
-				padding: 5px 10px;
-				text-align: right;
-			}
-			
-				div.container div.containerContent td.label label {
-					font-size: 11px;	
-				}
-			
-			div.container div.containerContent td.input {
-				padding: 5px 10px;
-				width: 250px;
-			}
-			
-				div.container div.containerContent td.input input, div.container div.containerContent td.input select {
-					width: 250px;
-				}
-				
-			div.container div.containerContent td.error {
-				padding: 10px;
-				color: #ff0000;
-			}					
-				
-			div.container div.containerContent td.button {
-				padding: 5px 10px;
-				text-align: right;
-			}
-			
-				div.container div.containerContent td.button input[type=submit] {
-					margin-left: 10px;
-				}				
-			
-				div.container div.containerContent td.button span.success {
-					color: green;	
-				}
-				
-				div.container div.containerContent td.button span.error {
-					color: red;	
-				}
-		
-		div.container div.containerBottom {
-			width: 700px;
-			height: 14px;
-			background: url(images/div_containerBottom.png) no-repeat;
-		}
-
-	div.separator {
-		border-top: 1px solid #ccc;
-		border-bottom: 1px solid #fff;
-	}
 
 	div#wrapperSection1 {
 		background-color: #f1f1f1;
@@ -368,7 +248,7 @@ div.person_entry {
 	height: 52px;
 }
 
-.person_entry .avatar {
+.avatar56 {
 	position: absolute;
 	width:56px;
 	height:56px;
@@ -496,6 +376,11 @@ div#amount_field {
 	display: none;
 }
 
+#participants .avatar {
+	height: 40px;
+	width: 40px;
+}
+
 #participants .user_id {
 	display: none;
 }
@@ -536,18 +421,18 @@ button, input[type=submit] {
 
 /* preferences */
 
-#account_prefs label {
+.form_fields label {
 	float: left;
 	width: 180px;
 	text-align: right;
 	margin-right: 15px;
 }
 
-#account_prefs input[type=text], #account_prefs input[type=password], #account_prefs select {
+.form_fields input[type=text], .form_fields input[type=password], .form_fields select {
 	position:relative;
 	width: 305px;
 }
-#account_prefs input[type=submit] {
+.form_fields input[type=submit] {
 	position: relative;
 	bottom: 7px;
 	float:right;

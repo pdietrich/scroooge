@@ -50,7 +50,7 @@ module ApplicationHelper
     res += "\t<option>#{options[:blank_text]||''}</option>\n" if options[:blank] 
     for p in current_person.known_people
       res += <<-HTML
-        <option value="#{p.id}" class="#{p.grade}" style="background-image:url(#{ p.gravatar_url( :size => 20) })" #{options[:selected] == p.id ? 'selected="selected"' : ''}>
+        <option value="#{p.id}" class="#{p.grade}" style="background-image:url(#{h p.gravatar_url( :size => 20) })" #{options[:selected] == p.id ? 'selected="selected"' : ''}>
               #{p.name}
         </option>
       HTML

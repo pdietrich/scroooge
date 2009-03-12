@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
 
   
   before_filter :set_current_currency
+  layout :determine_layout
+  
 
 private
   def set_current_currency
@@ -31,5 +33,9 @@ private
     end
     $current_currency = session[:currency]
     return true # just in case
+  end
+  
+  def determine_layout
+    logged_in? ? 'logged_in' : 'logged_out'
   end
 end

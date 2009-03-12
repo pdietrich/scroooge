@@ -16,12 +16,16 @@
 	<table id="participant_table">
 		<thead>
 			<tr>
+				<th></th>
 				<th>name</th>
 				<th>factor</th>
 			</tr>
 		</thead>
 		<tbody id="participants">
 			<tr class="participant_row_template">
+				<td>
+					<img class="avatar" src="<%=h current_person.gravatar_url( :size => 56 ) %>"></img>
+				</td>
 				<td class="user_col">
 					<span class="user_id"><%= current_person.id %></span>
 					<span class="user_name"><%= current_person.name %></span>
@@ -41,6 +45,10 @@
 <% content_for :javascript do %>
 <script type="text/javascript">
 // <!--
+var gravatarURLs = {
+	<%= current_person.known_people.map{|p| "#{p.id}: '#{p.gravatar_url( :size => 56 )}'"}.join(",\n") %>
+};
+
 $(document).ready(function() {
 	$('button.remove_person').click(function() {
 		$(this).closest('.participant_row').remove();
@@ -61,6 +69,7 @@ $(document).ready(function() {
    			var row = rowFromTemplate();
    			row.find('.user_id').text( personID );
    			row.find('.user_name').text( personName );
+			row.find('.avatar').attr('src', gravatarURLs[personID] );
    			$('#participants').append( row );
 			$('#person_id').val('');
 			row.find('.factor').focus();
