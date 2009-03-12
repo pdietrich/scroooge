@@ -1,53 +1,62 @@
 
 <% container do %>
-	<div id="bill_fields">
-		<input type="text" id="bill_name" name="bill_name" value="Description" />
-		<div id="amount_field">
-			<input type="text" id="bill_amount" name="bill_amount" />
-			<label id="bill_amount_label" for="bill_amount"><%= current_person.currency.short_code %></label>
+	<% form_tag url_for(:action => "create"), :onsubmit => 'validateBill();' do %>
+		<div id="bill_fields">
+			<input type="text" id="bill_name" name="bill_name" value="Description" />
+			<div id="amount_field">
+				<input type="text" id="bill_amount" name="bill_amount" />
+				<label id="bill_amount_label" for="bill_amount"><%= current_person.currency.short_code %></label>
+			</div>
+			<div id="payer_field">
+				<label for="payer_id">Payer</label>
+				<%= friend_select_box( :name => 'payer_id', :selected => current_person.id) %>
+			</div>
 		</div>
-		<div id="payer_field">
-			<label for="payer_id">Payer</label>
-			<%= friend_select_box( :name => 'payer_id', :selected => current_person.id) %>
+	
+		<h2 style="text-align:center">Please choose everyone who is sharing the bill:</h2>
+		<table id="participant_table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>name</th>
+					<th>factor</th>
+				</tr>
+			</thead>
+			<tbody id="participants">
+				<tr class="participant_row_template">
+					<td>
+						<div class="avatar_container"></div>
+						<!-- img class="avatar" src="<%=h current_person.gravatar_url( :size => 56 ) %>" /  -->
+					</td>
+					<td class="user_col">
+						<span class="user_name"></span>
+					</td>
+					<td class="factor_col">
+						<input type="text" class="factor" name="f" value="1.0" />
+					</td>
+					<td><button class="remove_person">Remove Person</button></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div id="add_person">
+			<%= friend_select_box( :name => 'person_id', :blank => true, :blank_text => 'Add a person...') %>
 		</div>
-	</div>
 	
-	<h2 style="text-align:center">Please choose everyone who is sharing the bill:</h2>
-	<table id="participant_table">
-		<thead>
-			<tr>
-				<th></th>
-				<th>name</th>
-				<th>factor</th>
-			</tr>
-		</thead>
-		<tbody id="participants">
-			<tr class="participant_row_template">
-				<td>
-					<img class="avatar" src="<%=h current_person.gravatar_url( :size => 56 ) %>"></img>
-				</td>
-				<td class="user_col">
-					<span class="user_id"><%= current_person.id %></span>
-					<span class="user_name"><%= current_person.name %></span>
-				</td>
-				<td class="factor_col"><input type="text" class="factor" name="factor" value="1.0" /></td>
-				<td><button class="remove_person">Remove Person</button></td>
-			</tr>
-		</tbody>
-	</table>
-	<div id="add_person">
-		<%= friend_select_box( :name => 'person_id', :blank => true, :blank_text => 'Add a person...') %>
-	</div>
-	
-	<button id="create_bill_button">Create Bill</button>
+		<input id="create_bill_button" type="submit" name="create" value="Create Bill" />
+	<% end %><% # of form_tag %>
 <% end %>						
 
 <% content_for :javascript do %>
 <script type="text/javascript">
 // <!--
 var gravatarURLs = {
-	<%= current_person.known_people.map{|p| "#{p.id}: '#{p.gravatar_url( :size => 56 )}'"}.join(",\n") %>
+	<%= current_person.known_people.map{|p| "#{p.id}: '#{h p.gravatar_url( :size => 56 )}'"}.join(",\n") %>
 };
+
+function validateBill(){
+	return confirm('not valid!');;
+}
 
 $(document).ready(function() {
 	$('button.remove_person').click(function() {
@@ -59,23 +68,30 @@ $(document).ready(function() {
 		.addClass('participant_row');
 	}
 	// add a row for the user who creates the bill:
-	$('#participants').append( rowFromTemplate() );
+	// $('#participants').append( rowFromTemplate() );
+	
+	function addPerson(personID, personName) {
+		var row = rowFromTemplate();
+		row.find('.user_name').text( personName );
+		row.find('.avatar_container').html( '<img class="avatar" src="'+ gravatarURLs[personID] +'" alt="avatar" />');
+		row.find('.factor').attr( 'name', 'factors['+personID+']' );
+		$('#participants').append( row );
+		$('#person_id').val('');
+		row.find('.factor').focus();
+	}
+	
+	addPerson(<%= current_person.id %>, '<%= current_person.name %>');
 	
 	$('#person_id').change( function() {
 		var personID = $('#person_id').val();
 	   	var personName = $('#person_id :selected').text();
 	
 		if( personID && personName ) {
-   			var row = rowFromTemplate();
-   			row.find('.user_id').text( personID );
-   			row.find('.user_name').text( personName );
-			row.find('.avatar').attr('src', gravatarURLs[personID] );
-   			$('#participants').append( row );
-			$('#person_id').val('');
-			row.find('.factor').focus();
+			addPerson(personID, personName);
 		}
 	});
 
+	/*
 	$('#create_bill_button').click(function() {
 		var billName = $('#bill_name').val();
 		var billAmount = $('#bill_amount').val()
@@ -119,6 +135,7 @@ $(document).ready(function() {
 			
 		}, 'json');
 	});
+	*/
 });
 // -->
 </script>

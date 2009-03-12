@@ -77,11 +77,10 @@
 	<div id="section3">
 		<div style="color:red"><%= flash[:error] %></div>
 
-		<% # hier kommt der Hauptcontent: %>
 		<%= yield %>
 		
 		<div id="footer">
-			ideas and development by Patrick Dietrich with the help of <a href="<%= url_for( :controller => 'people', :action => 'about' ) %>">many others</a>
+			ideas and development by Patrick Dietrich with the help of <a href="<%= url_for( :controller => 'people', :action => 'about' ) %>">others</a>
 		</div>
 		
 	</div>	

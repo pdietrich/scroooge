@@ -381,10 +381,6 @@ div#amount_field {
 	width: 40px;
 }
 
-#participants .user_id {
-	display: none;
-}
-
 #participants .factor {
 	width: 35px;
 	text-align: center;

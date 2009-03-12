@@ -68,17 +68,15 @@ class BillsController < ApplicationController
   # POST /bills
   # POST /bills.xml
   def create
-    data = JSON.parse( params[:data] )
-    puts data.inspect
-    
+    puts params.inspect
     
     @people_by_email = {}
 
     Bill.transaction do
       @bill = Bill.new
-      @bill.amount = data['bill_amount']
-      @bill.name = data['bill_name']
-      @bill.payer_id = data['payer_id']
+      @bill.amount = params['bill_amount']
+      @bill.name = params['bill_name']
+      @bill.payer_id = params['payer_id']
       
       # unless params[:bill][:payer_id] and params[:bill][:payer_id] != ''
       #         @bill.payer = find_or_create_person_by_email( params[:bill][:payer_email], params[:bill][:payer_name] )
@@ -87,16 +85,14 @@ class BillsController < ApplicationController
       @bill.creator_id = current_person.id
       @bill.currency_id = current_person.currency_id
     
-      for p in data['participants']
-        puts "\t#{p.inspect}"
-        
+      for id, factor in params[:factors]        
         participation = @bill.participations.build()
         participation.creator_id = current_person.id
         
-        if p['user_id'] and p['user_id'] =~ /^\d+$/
+        if id and id =~ /^\d+$/
           # TODO: foreign key constraint for this!
-          participation.participant_id = p['user_id']
-          participation.factor = p['factor']
+          participation.participant_id = id
+          participation.factor = factor
         # else
         #   raise 'no valid id or email found' unless p['email']
         #   participation.participant = find_or_create_person_by_email( p['email'], p['name'] )
@@ -112,9 +108,9 @@ class BillsController < ApplicationController
         end
 
         flash[:notice] = 'Bill was successfully created.'
-        render :json => {}
+        redirect_to :action => 'index'
       else
-        render :json => {:errors => @bill.errors}
+        render :action => 'new'
       end
     end # of transaction
   end
