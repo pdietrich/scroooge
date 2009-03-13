@@ -39,32 +39,6 @@ input[type=text], input[type=password], textarea, select {
 	border: 1px solid #ccc;		
 }
 
-div.fieldWithErrors {
-	display: inline;
-}
-
-	div.fieldWithErrors input, input.fieldWithErrors {
-		border: 1px dashed red;
-	}
-
-	input.blur, textarea.blur {
-		color: #666;
-		border: 1px solid #ccc;
-	}
-	
-		div.fieldWithErrors input.blur, div.fieldWithErrors textarea.blur {
-			border: 1px dashed red;
-		}
-
-	input.focus, textarea.focus, input[type=text]:focus, input[type=password]:focus, textarea:focus {
-		color: #444;
-		border: 1px solid #999;
-	}
-	
-		div.fieldWithErrors input.focus, div.fieldWithErrors textarea.focus, div.fieldWithErrors input[type=text]:focus, div.fieldWithErrors input[type=password]:focus, div.fieldWithErrors textarea:focus {
-			border: 1px dashed red;
-		}
-
 
 /* layout */ 
 
@@ -155,95 +129,58 @@ body {
 				text-align: right;
 			}
 
-div.formError {
-	display:inline;
+span.minus {
 	color: red;
 }
 
-tr.highlighted_line {
-	background-color: #e8ffdd;
-}
-
-span.minus {
-	color: #ff0000;
-}
-
 span.plus {
-	color: green; /* #77AF20; */
-}
-
-table.bill_list {
-	width:100%;
-}
-
-table.bill_list th {
-	font-weight: bold;
-	padding: 4px 0 4px 0;
-}
-
-table.bill_list td {
-	padding: 4px 0 4px 0;
-}
-
-table.bill_list td.price {
-	text-align: right;
-}
-
-table.bill_details{
-	width:100%;
-}
-
-table.bill_details th{
-	font-weight: bold;
-}
-table.bill_details td.price {
-	text-align: right;
+	color: #0f0;
 }
 
 
-
-	div.pd_container {
-		position: relative;
-		padding: 0;
-		margin-bottom: 35px;
+div.pd_container {
+	position: relative;
+	padding: 0;
+	margin-bottom: 35px;
+	width: 700px;
+}
+	
+	div.pd_container div.pd_containerTop {
+		position: absolute;
 		width: 700px;
+		height: 14px;
+		background: url(images/div_containerTop.png) no-repeat;
 	}
-		
-		div.pd_container div.pd_containerTop {
-			position: absolute;
-			width: 700px;
-			height: 14px;
-			background: url(images/div_containerTop.png) no-repeat;
+	
+		div.pd_container div.pd_containerContent {
+			position: relative;
+			top: 14px;
+			width: 652px;
+			padding: 0 24px;
+			background: url(images/div_containerContent.png) repeat-y;
 		}
 		
-			div.pd_container div.pd_containerContent {
-				position: relative;
-				top: 14px;
-				width: 652px;
-				padding: 0 24px;
-				background: url(images/div_containerContent.png) repeat-y;
-			}
-			
-			/*
-				div.pd_container div.pd_containerContent > div {
-					margin: 0 12px 0 12px;
-					position: relative;
-					padding-bottom: 10px;
-				}
-			*/
-		
-		div.pd_container div.pd_containerBottom {
-			position: absolute;
-			width: 700px;
-			height: 14px;
-			bottom: -28px;
-			background: url(images/div_containerBottom.png) no-repeat;
-		}
+	div.pd_container div.pd_containerBottom {
+		position: absolute;
+		width: 700px;
+		height: 14px;
+		bottom: -28px;
+		background: url(images/div_containerBottom.png) no-repeat;
+	}
 
 /* new stuff */
 
-.error {
+div.fieldWithErrors {
+	display: inline;
+}
+
+.error, div.fieldWithErrors input {
 	border: 1px solid red !important;
+}
+
+.error_message {
+	color: red;
+	margin-left: 195px;
 }
 
 div.person_entry {
