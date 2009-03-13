@@ -242,6 +242,10 @@ table.bill_details td.price {
 
 /* new stuff */
 
+.error {
+	border: 1px solid red !important;
+}
+
 div.person_entry {
 	padding: 0 !important;
 	margin: 0 !important;

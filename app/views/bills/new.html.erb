@@ -1,6 +1,6 @@
 
 <% container do %>
-	<% form_tag url_for(:action => "create"), :onsubmit => 'validateBill();' do %>
+	<% form_tag url_for(:action => "create"), :onsubmit => 'return validateBill();' do %>
 		<div id="bill_fields">
 			<input type="text" id="bill_name" name="bill_name" value="Description" />
 			<div id="amount_field">
@@ -26,7 +26,6 @@
 				<tr class="participant_row_template">
 					<td>
 						<div class="avatar_container"></div>
-						<!-- img class="avatar" src="<%=h current_person.gravatar_url( :size => 56 ) %>" /  -->
 					</td>
 					<td class="user_col">
 						<span class="user_name"></span>
@@ -55,7 +54,12 @@ var gravatarURLs = {
 };
 
 function validateBill(){
-	return confirm('not valid!');;
+	$('.error').removeClass('error');
+	var errors = false;
+	$('#participants .factor').filter(function(){ return errors = !this.value.match( /^\s*(\d+\.?\d*|\d*\.?\d+)\s*$/ ) }).addClass('error');
+	$('#bill_amount').filter(function(){ return errors = !this.value.match( /^\s*(\d+\.?\d{0,2}|\d*\.?\d\d?)\s*$/ ) }).addClass('error');
+	$('#bill_name').filter(function(){ return errors = (this.value == '') }).addClass('error');
+	return confirm('not valid!');
 }
 
 $(document).ready(function() {

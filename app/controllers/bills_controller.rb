@@ -68,7 +68,6 @@ class BillsController < ApplicationController
   # POST /bills
   # POST /bills.xml
   def create
-    puts params.inspect
     
     @people_by_email = {}
 
@@ -99,10 +98,10 @@ class BillsController < ApplicationController
         end
       end
       
-      puts 'saving bill'
+      # puts 'saving bill'
       if @bill.save
-        puts "@bill = #{@bill.inspect}"
-        puts "bill saved"
+        # puts "@bill = #{@bill.inspect}"
+        # puts "bill saved"
         for participant in @bill.participants
           InvoiceMailer.deliver_bill_creation_notification( participant, @bill, current_person )
         end
