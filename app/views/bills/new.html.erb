@@ -54,16 +54,19 @@ var gravatarURLs = {
 };
 
 function validateBill(){
-		$('.error').removeClass('error');
+	$('.error').removeClass('error');
 	
 	var errors = true;
 	// chek if at least one participant is in the bill:
 	$('.participant_row').filter(function(){errors=false});
 	if( errors ) $('person_id').addClass('errors');
 	
-	$('#participants .factor').filter(function(){ return errors = !this.value.match( /^\s*(\d+\.?\d*|\d*\.?\d+)\s*$/ ) }).addClass('error');
-	$('#bill_amount').filter(function(){ return errors = !this.value.match( /^\s*(\d+\.?\d{0,2}|\d*\.?\d\d?)\s*$/ ) }).addClass('error');
-	$('#bill_name').filter(function(){ return errors = (this.value == '') }).addClass('error');
+	$('#participants .factor').filter(function(){ return !this.value.match( /^\s*(\d+\.?\d*|\d*\.?\d+)\s*$/ ) }).addClass('error');
+	$('#bill_amount').filter(function(){ return !this.value.match( /^\s*(\d+\.?\d{0,2}|\d*\.?\d\d?)\s*$/ ) }).addClass('error');
+	$('#bill_name').filter(function(){ return (this.value == '') }).addClass('error');
+	
+	errors = false;
+	$('.error').filter(function(){errors=true});
 	return !errors;
 }
 
