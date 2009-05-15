@@ -138,21 +138,23 @@ class Person < ActiveRecord::Base
     
     first_grade_ids = first_grade_people.map{|p| p.id}.join(',')
     
-    second_grade_people ||= Person.find_by_sql <<-SQL
-      SELECT DISTINCT people.*, "second" AS grade
-      FROM people
-      WHERE id in (
-        SELECT DISTINCT participant_id
-          FROM participations
-          WHERE payer_id IN (#{first_grade_ids})
-          AND participant_id NOT IN (#{first_grade_ids})
-        UNION
-        SELECT DISTINCT payer_id
-          FROM participations
-          WHERE participant_id IN (#{first_grade_ids})
-          AND payer_id NOT IN (#{first_grade_ids})
-      )
-    SQL
+    unless first_grade_ids.nil? or first_grade_ids.empty?
+      second_grade_people ||= Person.find_by_sql <<-SQL
+        SELECT DISTINCT people.*, "second" AS grade
+        FROM people
+        WHERE id in (
+          SELECT DISTINCT participant_id
+            FROM participations
+            WHERE payer_id IN (#{first_grade_ids})
+            AND participant_id NOT IN (#{first_grade_ids})
+          UNION
+          SELECT DISTINCT payer_id
+            FROM participations
+            WHERE participant_id IN (#{first_grade_ids})
+            AND payer_id NOT IN (#{first_grade_ids})
+        )
+      SQL
+    end
     
     @known_people = (first_grade_people||[]) + (second_grade_people||[])
     @known_people.sort!{|p1,p2| p1.name.downcase <=> p2.name.downcase }
